@@ -1,13 +1,30 @@
 import Hero from "@/components/Hero";
 import NewProducts from "@/components/NewProducts";
 import Testimonial from "@/components/Testimonial";
+import { IProduct } from "@/types";
 
-export default function Home() {
+async function getData() {
+  const res = await fetch('https://s3-eu-west-1.amazonaws.com/fid-recruiting/fid-task-4-ffront-products.json')
+  console.log(res)
+ 
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+ 
+  return res.json()
+}
+
+const  Home =async () => {
+  const data : IProduct[] | undefined = await getData()
+ 
   return (
     <main>
       <Hero />
-      <NewProducts />
+      <NewProducts productsData={data}/>
       <Testimonial />
     </main>
   );
+  
 }
+
+export default Home
