@@ -16,6 +16,12 @@ module.exports = {
         accent: "#FF8F9C",
         blackish: "#1b1b1b",
       },
+
+      screens: {
+        'sm': '640px', 
+        'md': '768px', 
+        'lg': '1024px', 
+      },
     },
   },
   plugins: [],
